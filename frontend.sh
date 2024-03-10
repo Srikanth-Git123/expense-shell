@@ -1,7 +1,7 @@
 source common.sh
 
 app_dir=/usr/share/nginx/html
-componenent=frontend
+component=frontend
 
 Print_Task_Heading "Install Nginx"
 dnf install nginx -y &>>$LOG
