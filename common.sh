@@ -1,6 +1,6 @@
 LOG=/tmp/expense.log
 
-Print_Tak_Heading() {
+Print_Task_Heading() {
 echo $1
 echo "############# $1 ###############" &>>LOG
 }
