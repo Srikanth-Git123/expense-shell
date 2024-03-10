@@ -2,7 +2,7 @@ Source common.sh
 
 mysql_root_password=$1
 if [ -z "${mysql_root_password}" ]; then
-  echo Input Password is missing
+  echo INput Password is missing
   exit 1
 fi
 
