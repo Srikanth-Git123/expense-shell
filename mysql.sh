@@ -6,15 +6,15 @@ if [ -z "${mysql_root_password}" ]; then
   exit 1
 fi
 
-Print_task_Heading "Install MySQL Server"
+Print_Task_Heading "Install MySQL Server"
 dnf install mysql-server -y &>>$LOG
 Check_Status $?
 
-Print_task_Heading "Start MySQL Service"
+Print_Task_Heading "Start MySQL Service"
 systemctl enable mysqld &>>$LOG
 systemctl start mysqld &>>$LOG
 Check_Status $?
 
-Print_task_Heading "Setup MySQL Password"
+Print_Task_Heading "Setup MySQL Password"
 mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOG
 Check_Status $?
