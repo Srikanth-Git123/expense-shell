@@ -13,3 +13,22 @@ Check_Status() {
     exit 2
   fi
 }
+
+App_PreReq() {
+  Print_Task_Heading "Clean the Old Content"
+  rm -rf ${app_dir} &>>$LOG
+  Check_Status $?
+
+  Print_Task_Heading "Creating app Directory"
+  mkdir ${app_dir} &>>$LOG
+  Check_Status $?
+
+  Print_Task_Heading "Download app Content"
+  curl -o /tmp/${component}.zip https://expense-artifacts.s3.amazonaws.com/expense-${component}-v2.zip &>>$LOG
+  Check_Status $?
+
+  Print_Task_Heading "Extract app Content"
+  cd ${app_dir} &>>$LOG
+  unzip /tmp/${component}.zip &>>$LOG
+  Check_Status $?
+}
