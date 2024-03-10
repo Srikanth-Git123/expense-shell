@@ -63,5 +63,5 @@ dnf install mysql -y &>>/tmp/expense.log
 echo $?
 
 Print_Tak_Heading "load Schema"
-mysql -h 172.31.12.55 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>/tmp/expense.log
+mysql -h 172.31.8.154 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>/tmp/expense.log
 echo $?
