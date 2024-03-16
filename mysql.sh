@@ -16,7 +16,7 @@ systemctl start mysqld &>>$LOG
 Check_Status $?
 
 Print_Task_Heading "Setup MySQL Password"
-echo 'show databases' [mysql -h 172.31.2.180 -uroot -p${mysql_root_password} &>>$LOG
+echo 'show databases' [mysql -h mysql-dev.psrikanth.online -uroot -p${mysql_root_password} &>>$LOG
 if [ $? -ne 0 ]; then
   mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOG
 fi

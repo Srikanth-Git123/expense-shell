@@ -7,7 +7,7 @@ component=backend
 
 #if password is not provided then we will exit
 if [ -z "${mysql_root_password=$1}" ]; then
-  echo Input Password is missing
+  echo Input Password is missing.
   exit 1
 fi
 
@@ -25,7 +25,7 @@ Check_Status $?
 
 Print_Task_Heading "Adding Application user"
 id exense &>>$LOG
-if [ $? -ne0 ]; then
+if [ $? -ne 0 ]; then
   useradd expense &>>$LOG
 fi
 Check_Status $?
@@ -36,7 +36,7 @@ Check_Status $?
 
 App_PreReq
 
-Print_Task_Heading "Download NodeJS dependencies"
+Print_Task_Heading "Download NodeJS Dependencies"
 cd /app &>>$LOG
 npm install &>>$LOG
 Check_Status $?
@@ -47,10 +47,10 @@ systemctl enable backend &>>$LOG
 systemctl start backend &>>$LOG
 Check_Status $?
 
-Print_Task_Heading "Install MySql Client"
+Print_Task_Heading "Install MySQL Client"
 dnf install mysql -y &>>$LOG
 Check_Status $?
 
 Print_Task_Heading "load Schema"
-mysql -h 172.31.2.180 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOG
+mysql -h mysql-dev.psrikanth.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOG
 Check_Status $?
